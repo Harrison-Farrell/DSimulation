@@ -2,6 +2,8 @@
 
 ## Linux Build Dependencies
 
+### SDL3
+
 Ubuntu 18.04, all available features enabled:
 ```
 sudo apt-get install build-essential git make \
@@ -13,6 +15,12 @@ libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev fcitx-libs-dev
 ```
 Ubuntu 22.04+ can also add ```libpipewire-0.3-dev libwayland-dev```  to that command line.
 
+### Dear IMGUI
+ Dear IMGUI requires both SL3 & OpenGL as dependencies
+```
+sudo apt-get install libglew-dev
+```
+
 ## Building.
 
 Once all the build dependencies have been installed. \
@@ -23,5 +31,5 @@ cd DSimulation
 mkdir build
 cd build 
 cmake ..
-make -j5
+cmake --build .
 ```
