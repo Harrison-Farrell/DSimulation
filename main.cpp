@@ -100,21 +100,12 @@ int main(int, char**) {
 
   // Our state
   bool show_demo_window = true;
-  bool show_another_window = false;
+  bool show_another_window = true;
   ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
   // Main loop
   bool done = false;
-#ifdef __EMSCRIPTEN__
-  // For an Emscripten build we are disabling file-system access, so let's not
-  // attempt to do a fopen() of the imgui.ini file. You may manually call
-  // LoadIniSettingsFromMemory() to load settings from your own storage.
-  io.IniFilename = nullptr;
-  EMSCRIPTEN_MAINLOOP_BEGIN
-#else
-  while (!done)
-#endif
-  {
+  while (!done) {
     // Poll and handle events (inputs, window resize, etc.)
     // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to
     // tell if dear imgui wants to use your inputs.
@@ -204,9 +195,6 @@ int main(int, char**) {
     ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
     SDL_RenderPresent(renderer);
   }
-#ifdef __EMSCRIPTEN__
-  EMSCRIPTEN_MAINLOOP_END;
-#endif
 
   // Cleanup
   ImGui_ImplSDLRenderer3_Shutdown();

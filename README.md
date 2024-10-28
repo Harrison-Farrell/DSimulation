@@ -1,7 +1,4 @@
-# SDL3 Tutorials
-
-This is [Lazy Foo Productions](https://lazyfoo.net/tutorials/SDL/index.php) SDL self guided tutorial examples. \
-These examples have been tutorials have been linked against SDL3.
+# D-SIM
 
 ## Linux Build Dependencies
 
@@ -21,8 +18,8 @@ Ubuntu 22.04+ can also add ```libpipewire-0.3-dev libwayland-dev```  to that com
 Once all the build dependencies have been installed. \
 Run the following terminal commands.
 ```
-git clone https://github.com/Harrison-Farrell/SDL-Tutorials.git \
-cd SDL-Tutorials
+git clone https://github.com/Harrison-Farrell/DSimulation.git \
+cd DSimulation
 mkdir build
 cd build 
 cmake ..
