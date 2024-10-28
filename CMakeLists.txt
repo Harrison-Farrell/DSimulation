@@ -12,6 +12,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # Options
 option(DSIM_BUILD_DOCS "Build documentation" FALSE)
+option(DSIM_BUILD_EXAMPLES "Build examples" TRUE)
 
 include(FetchContent)
 
@@ -33,7 +34,20 @@ target_link_libraries(
           DSIM_Window
 )
 
+# Move artifacts to the binary build directory
+add_custom_command(
+  TARGET ${PROJECT_NAME}
+  POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_SOURCE_DIR}/artifacts/AK47.bmp
+          $<TARGET_FILE_DIR:${PROJECT_NAME}>
+)
+
 # Documentation
 if(${DSIM_BUILD_DOCS})
   add_subdirectory(docs)
+endif()
+
+# Examples
+if(${DSIM_BUILD_EXAMPLES})
+  add_subdirectory(examples)
 endif()

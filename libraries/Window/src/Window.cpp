@@ -7,21 +7,21 @@
 #include "Window.h"
 
 DSIM::Window::Window(int width, int height)
-    : m_screenWidth(width), m_screenHeight(height) {
+  : m_screenWidth(width), m_screenHeight(height) {
   // initialize SDL subsystem
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     // attempt to initialize SDL. Throw error if failure
     std::string error =
-        ("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+      ("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
     throw std::runtime_error(error);
   }
 
   // create window
-  m_window = SDL_CreateWindow("SDL Tutorial", m_screenWidth, m_screenHeight, 0);
+  m_window = SDL_CreateWindow("SDL Window", m_screenWidth, m_screenHeight, 0);
   // throw error if failure to create SDL Window
   if (m_window == NULL) {
     std::string error =
-        ("Window could not be created. SDL_Error: %s\n", SDL_GetError());
+      ("Window could not be created. SDL_Error: %s\n", SDL_GetError());
     throw std::runtime_error(error);
   }
 
@@ -57,8 +57,8 @@ bool DSIM::Window::loadBMP(std::string media_path) {
 
   // throw error on failure to load media
   if (m_loadedMedia == NULL) {
-    std::string error = ("Unable to load image %s! SDL Error: %s\n", "AK47.bmp",
-                         SDL_GetError());
+    std::string error =
+      ("Unable to load image %s! SDL Error: %s\n", "AK47.bmp", SDL_GetError());
     throw std::runtime_error(error);
     success_flag = false;
   }
